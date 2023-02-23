@@ -1,6 +1,6 @@
 from csv import *
 from tkinter import *
-#from tkinter import messagebox
+from tkinter import messagebox
 import tkinter as tk
 #import json
 
@@ -8,12 +8,12 @@ main = tk.Tk()
 main.title('Bye Bye Excel')
 main.geometry("700x550")
 lista_principal = []
-lista_saida_formatada = []
+#lista_saida_formatada = []
 
 #FUNÇÕES
 def Add():
-    entrada = caixa_entrada.get()
-    saida = caixa_saida.get()
+    #entrada = caixa_entrada.get()
+    #saida = caixa_saida.get()
 
     #IMPORTANTE: Aqui tentei passar a sintaxe do JSON pelo backend, mas o Python tá forçando a barra.
     #lista_saida = [caixa_saida.get()]
@@ -22,15 +22,17 @@ def Add():
         #lista_saida_formatada.append(saida_formatada)
     #IMPORTANTE - FIM
 
-    lista_principal.append(entrada)
-    lista_principal.append(saida)
-    #messagebox.showinfo('Informação', 'Dados adicionados com sucesso!')
+    lista = [caixa_entrada.get(),caixa_saida.get()]
+
+    lista_principal.append(lista)
+    #lista_principal.append(saida)
+    messagebox.showinfo('Informação', 'Dados adicionados com sucesso!')
 
 def Save():
     with open('data_entry.csv', 'w') as file:
         Writer = writer(file)
-        Writer.writerow(lista_principal)
-        #messagebox.showinfo('Informação', 'Planilha salva com sucesso!')
+        Writer.writerows(lista_principal)
+        messagebox.showinfo('Informação', 'Planilha salva com sucesso!')
 
 #def Clear():
     #caixa_entrada.delete(0, END)
