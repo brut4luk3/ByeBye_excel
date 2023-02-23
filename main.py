@@ -2,30 +2,32 @@ from csv import *
 from tkinter import *
 from tkinter import messagebox
 import tkinter as tk
-#import json
+import json
 
 main = tk.Tk()
 main.title('Bye Bye Excel')
 main.geometry("700x550")
 lista_principal = []
-#lista_saida_formatada = []
+lista_saida_formatada = []
 
 #FUNÇÕES
 def Add():
-    #entrada = caixa_entrada.get()
-    #saida = caixa_saida.get()
+    #ATUALMENTE FUNCIONANDO
+    #lista = [caixa_entrada.get(), caixa_saida.get()]
+    #lista_principal.append(lista)
+    #ATUALMENTE FUNCIONANDO - FIM
 
-    #IMPORTANTE: Aqui tentei passar a sintaxe do JSON pelo backend, mas o Python tá forçando a barra.
-    #lista_saida = [caixa_saida.get()]
-    #for x in lista_saida:
-        #saida_formatada = "{'retorno':{x}}".format(x = "x")
-        #lista_saida_formatada.append(saida_formatada)
-    #IMPORTANTE - FIM
+    #VERSÃO EM TESTES
+    entrada = caixa_entrada.get()
+    lista_saida = [caixa_saida.get()]
 
-    lista = [caixa_entrada.get(),caixa_saida.get()]
+    for x in lista_saida:
+        saida_formatada = json.dumps({"retorno": x})
+        lista_saida_formatada.append(saida_formatada)
 
-    lista_principal.append(lista)
-    #lista_principal.append(saida)
+    lista_principal.append(entrada)
+    lista_principal.append(lista_saida_formatada)
+    # VERSÃO EM TESTES - FIM
     messagebox.showinfo('Informação', 'Dados adicionados com sucesso!')
 
 def Save():
@@ -65,7 +67,7 @@ texto_saida_label.pack()
 
 #INPUT DE SAÍDA
 caixa_saida = tk.Entry(width=50, borderwidth=5)
-caixa_saida.insert(0,"{'retorno':'  '}")
+#caixa_saida.insert(0,"{'retorno':'  '}")
 caixa_saida.pack()
 #INPUT DE SAÍDA - FIM
 
