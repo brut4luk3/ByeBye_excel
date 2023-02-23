@@ -20,6 +20,7 @@ def Add():
     #for x in lista_saida:
         #saida_formatada = "{'retorno':{x}}".format(x = "x")
         #lista_saida_formatada.append(saida_formatada)
+    #IMPORTANTE - FIM
 
     lista_principal.append(entrada)
     lista_principal.append(saida)
