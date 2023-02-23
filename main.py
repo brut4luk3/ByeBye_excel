@@ -1,6 +1,6 @@
 from csv import *
 from tkinter import *
-from tkinter import messagebox
+#from tkinter import messagebox
 import tkinter as tk
 #import json
 
@@ -24,17 +24,17 @@ def Add():
 
     lista_principal.append(entrada)
     lista_principal.append(saida)
-    messagebox.showinfo('Informação', 'Dados adicionados com sucesso!')
+    #messagebox.showinfo('Informação', 'Dados adicionados com sucesso!')
 
 def Save():
     with open('data_entry.csv', 'w') as file:
         Writer = writer(file)
         Writer.writerow(lista_principal)
-        messagebox.showinfo('Informação', 'Planilha salva com sucesso!')
+        #messagebox.showinfo('Informação', 'Planilha salva com sucesso!')
 
-def Clear():
-    caixa_entrada.delete(0, END)
-    caixa_saida.delete(0, END)
+#def Clear():
+    #caixa_entrada.delete(0, END)
+    #caixa_saida.delete(0, END)
 #FUNÇÕES - FIM
 
 #ÁREA DA LOGO
@@ -70,12 +70,12 @@ caixa_saida.pack()
 #BOTÕES
 save = Button(main,text='Salvar e finalizar',padx=20,pady=10,command=Save)
 add = Button(main,text='Adicionar nova linha',padx=20,pady=10,command=Add)
-clear = Button(main,text='Limpar',padx=18,pady=10,command=Clear)
+#clear = Button(main,text='Limpar',padx=18,pady=10,command=Clear)
 Exit = Button(main,text='Sair',padx=20,pady=10,command=main.quit)
 
 save.pack()
 add.pack()
-clear.pack()
+#clear.pack()
 Exit.pack()
 #BOTÕES - FIM
 
