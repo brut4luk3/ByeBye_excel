@@ -2,6 +2,7 @@ from csv import *
 from tkinter import *
 from tkinter import messagebox
 import tkinter as tk
+#import json
 
 main = tk.Tk()
 main.title('Bye Bye Excel')
@@ -14,9 +15,10 @@ def Add():
     entrada = caixa_entrada.get()
     saida = caixa_saida.get()
 
+    #IMPORTANTE: Aqui tentei passar a sintaxe do JSON pelo backend, mas o Python tá forçando a barra.
     #lista_saida = [caixa_saida.get()]
     #for x in lista_saida:
-        #saida_formatada = str(f"{'retorno':'{x}'}")
+        #saida_formatada = "{'retorno':{x}}".format(x = "x")
         #lista_saida_formatada.append(saida_formatada)
 
     lista_principal.append(entrada)
@@ -60,7 +62,7 @@ texto_saida_label.pack()
 
 #INPUT DE SAÍDA
 caixa_saida = tk.Entry(width=50, borderwidth=5)
-caixa_saida.insert(0,"{'retorno':' '}")
+caixa_saida.insert(0,"{'retorno':'  '}")
 caixa_saida.pack()
 #INPUT DE SAÍDA - FIM
 
