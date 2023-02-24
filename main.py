@@ -8,7 +8,6 @@ main = tk.Tk()
 main.title('Bye Bye Excel')
 main.geometry("700x550")
 lista_principal = []
-lista_saida_formatada = []
 
 #FUNÇÕES
 def Add():
@@ -19,26 +18,22 @@ def Add():
 
     #VERSÃO EM TESTES
     entrada = caixa_entrada.get()
-    lista_saida = [caixa_saida.get()]
-
-    for x in lista_saida:
-        saida_formatada = json.dumps({"retorno": x})
-        lista_saida_formatada.append(saida_formatada)
+    saida = json.dumps({"retorno": caixa_saida.get()})
 
     lista_principal.append(entrada)
-    lista_principal.append(lista_saida_formatada)
+    lista_principal.append(saida)
     # VERSÃO EM TESTES - FIM
     messagebox.showinfo('Informação', 'Dados adicionados com sucesso!')
 
 def Save():
     with open('data_entry.csv', 'w') as file:
         Writer = writer(file)
-        Writer.writerows(lista_principal)
+        Writer.writerow(lista_principal)
         messagebox.showinfo('Informação', 'Planilha salva com sucesso!')
 
-#def Clear():
-    #caixa_entrada.delete(0, END)
-    #caixa_saida.delete(0, END)
+def Clear():
+    caixa_entrada.delete(0, END)
+    caixa_saida.delete(0, END)
 #FUNÇÕES - FIM
 
 #ÁREA DA LOGO
@@ -74,12 +69,12 @@ caixa_saida.pack()
 #BOTÕES
 save = Button(main,text='Salvar e finalizar',padx=20,pady=10,command=Save)
 add = Button(main,text='Adicionar nova linha',padx=20,pady=10,command=Add)
-#clear = Button(main,text='Limpar',padx=18,pady=10,command=Clear)
+clear = Button(main,text='Limpar',padx=18,pady=10,command=Clear)
 Exit = Button(main,text='Sair',padx=20,pady=10,command=main.quit)
 
 save.pack()
 add.pack()
-#clear.pack()
+clear.pack()
 Exit.pack()
 #BOTÕES - FIM
 
