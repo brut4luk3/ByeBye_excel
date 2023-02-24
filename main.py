@@ -11,25 +11,25 @@ lista_principal = []
 
 #FUNÇÕES
 def Add():
-    #ATUALMENTE FUNCIONANDO
-    #lista = [caixa_entrada.get(), caixa_saida.get()]
-    #lista_principal.append(lista)
-    #ATUALMENTE FUNCIONANDO - FIM
-
-    #VERSÃO EM TESTES
-    entrada = caixa_entrada.get()
-    saida = json.dumps({"retorno": caixa_saida.get()})
-
-    lista_principal.append(entrada)
-    lista_principal.append(saida)
-    # VERSÃO EM TESTES - FIM
+    lista = [caixa_entrada.get(), json.dumps({"retorno": caixa_saida.get()})]
+    lista_principal.append(lista)
     messagebox.showinfo('Informação', 'Dados adicionados com sucesso!')
 
 def Save():
-    with open('data_entry.csv', 'w') as file:
+    with open('data_entry.csv', 'w', newline='') as file:
         Writer = writer(file)
-        Writer.writerow(lista_principal)
+        Writer.writerows(lista_principal)
         messagebox.showinfo('Informação', 'Planilha salva com sucesso!')
+
+def Download():
+    ler_arquivo = open('data_entry.csv', 'r')
+    data = ler_arquivo.read()
+    ''.join(sorted(set(data), key=data.index))
+    data = ler_arquivo.read()
+
+    ler_arquivo.close()
+
+    print(data)
 
 def Clear():
     caixa_entrada.delete(0, END)
@@ -62,17 +62,18 @@ texto_saida_label.pack()
 
 #INPUT DE SAÍDA
 caixa_saida = tk.Entry(width=50, borderwidth=5)
-#caixa_saida.insert(0,"{'retorno':'  '}")
 caixa_saida.pack()
 #INPUT DE SAÍDA - FIM
 
 #BOTÕES
 save = Button(main,text='Salvar e finalizar',padx=20,pady=10,command=Save)
+download = Button(main,text='Download',padx=20,pady=10,command=Download)
 add = Button(main,text='Adicionar nova linha',padx=20,pady=10,command=Add)
 clear = Button(main,text='Limpar',padx=18,pady=10,command=Clear)
 Exit = Button(main,text='Sair',padx=20,pady=10,command=main.quit)
 
 save.pack()
+download.pack()
 add.pack()
 clear.pack()
 Exit.pack()
