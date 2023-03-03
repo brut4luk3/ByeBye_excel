@@ -12,13 +12,15 @@ lista_principal = []
 
 #FUNÇÕES
 def Add():
-    #lista = [caixa_entrada.get(), json.dumps({"retorno": caixa_saida.get()})]
-    #lista_principal.append(lista)
-
+    chave_json = '"retorno":'
+    chave_1 = '{'
+    chave_2 = '}'
     entrada = caixa_entrada.get()
-    saida = json.dumps({"retorno": caixa_saida.get()})
-    saida_formatada = saida.replace('""', ' ')
-    lista = [entrada, saida_formatada]
+    saida = caixa_saida.get()
+
+    saida_completa = f'{chave_1}{chave_json}{saida}{chave_2}'
+
+    lista = [entrada, saida_completa]
     lista_principal.append(lista)
     messagebox.showinfo('Informação', 'Dados adicionados com sucesso!')
 
