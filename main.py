@@ -1,3 +1,4 @@
+import csv
 from csv import *
 from tkinter import *
 from tkinter import messagebox
@@ -20,16 +21,6 @@ def Save():
         Writer = writer(file)
         Writer.writerows(lista_principal)
         messagebox.showinfo('Informação', 'Planilha salva com sucesso!')
-
-def Download():
-    ler_arquivo = open('data_entry.csv', 'r')
-    data = ler_arquivo.read()
-    ''.join(sorted(set(data), key=data.index))
-    data = ler_arquivo.read()
-
-    ler_arquivo.close()
-
-    print(data)
 
 def Clear():
     caixa_entrada.delete(0, END)
