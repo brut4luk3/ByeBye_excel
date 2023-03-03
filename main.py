@@ -1,4 +1,4 @@
-import csv
+#import csv
 from csv import *
 from tkinter import *
 from tkinter import messagebox
@@ -58,13 +58,11 @@ caixa_saida.pack()
 
 #BOTÕES
 save = Button(main,text='Salvar e finalizar',padx=20,pady=10,command=Save)
-download = Button(main,text='Download',padx=20,pady=10,command=Download)
 add = Button(main,text='Adicionar nova linha',padx=20,pady=10,command=Add)
 clear = Button(main,text='Limpar',padx=18,pady=10,command=Clear)
 Exit = Button(main,text='Sair',padx=20,pady=10,command=main.quit)
 
 save.pack()
-download.pack()
 add.pack()
 clear.pack()
 Exit.pack()
