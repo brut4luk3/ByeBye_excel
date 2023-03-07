@@ -1,13 +1,11 @@
-#import csv
 from csv import *
 from tkinter import *
 from tkinter import messagebox
 import tkinter as tk
-import json
 
 main = tk.Tk()
 main.title('Bye Bye Excel')
-main.geometry("700x550")
+main.geometry("1000x550")
 lista_principal = []
 
 #FUNÇÕES
