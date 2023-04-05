@@ -40,6 +40,8 @@ def CreateAndAdd():
     with open('data_entry.csv', 'w', newline='') as file:
         Writer = writer(file)
         Writer.writerows(lista_principal)
+
+        file.close()
     #SALVA O DOCUMENTO - FIM
 
     #VERIFICA SE EXISTE ARQUIVO
@@ -63,32 +65,33 @@ def CreateAndAdd():
     caixa_saida.delete(0, END)
     #LIMPA OS CAMPOS ENTRY - FIM
 
-def ClearLast():
+#Função ClearLast será comentada por hora, com bugs, não funcional.
+#def ClearLast():
     #VERIFICA SE EXISTE ARQUIVO
-    caminho_clearLast = Path('./data_entry.csv')
-    verifica_arquivo_clearLast = caminho_clearLast.is_file()
+    #caminho_clearLast = Path('./data_entry.csv')
+    #verifica_arquivo_clearLast = caminho_clearLast.is_file()
     #VERIFICA SE EXISTE ARQUIVO - FIM
 
     #APAGA A ÚLTIMA LINHA
-    if verifica_arquivo_clearLast == True:
-        linhas = open("data_entry.csv", 'r+')
-        acao_linhas = linhas.readlines()
-        linhas.seek(0)
-        linhas.truncate()
-        linhas.writelines(acao_linhas[:-1])
+    #if verifica_arquivo_clearLast == True:
+        #linhas = open("data_entry.csv", 'r+')
+        #acao_linhas = linhas.readlines()
+        #linhas.seek(0)
+        #linhas.truncate()
+        #linhas.writelines(acao_linhas[:-1])
 
-        linhas.close()
+        #frame_visualizacao.delete(1.0, END)
 
-        frame_visualizacao.delete(1.0, END)
+        #linhas.close()
 
-        ler_linhas = open("data_entry.csv", 'r')
-        acao_ler_linhas = ler_linhas.read()
-        frame_visualizacao.insert(END, acao_ler_linhas)
+        #nova_leitura = open("data_entry.csv", 'r')
+        #acao_nova_leitura = nova_leitura.read()
+        #frame_visualizacao.insert(END, acao_nova_leitura)
 
-        ler_linhas.close()
+        #nova_leitura.close()
 
-    elif verifica_arquivo_clearLast != True:
-        pass
+    #elif verifica_arquivo_clearLast != True:
+        #pass
     #APAGA A ÚLTIMA LINHA - FIM
 #FUNÇÕES - FIM
 
@@ -99,11 +102,14 @@ image_label.place(x=50, y=20)
 #ÁREA DA LOGO - FIM
 
 #ÁREA DA VISUALIZAÇÃO DE DADOS NA PLANILHA
-texto_visualizacao_label = tk.Label(text='Visualize as linhas adicionadas na planilha:', font=(35), pady=10)
+texto_visualizacao_label = tk.Label(text='Visualize as linhas adicionadas na planilha:', font=("Arial", 15), pady=10)
 texto_visualizacao_label.place(x=500, y=20)
 
+comentario_texto_visualizacao_label = tk.Label(text='Importante: os dados abaixo são apenas ilustrativos!', font=("Arial", 8), pady=1)
+comentario_texto_visualizacao_label.place(x=500, y=55)
+
 frame_visualizacao = Text(main, width=45, height=28)
-frame_visualizacao.place(x=500, y=55)
+frame_visualizacao.place(x=500, y=75)
 #ÁREA DA VISUALIZAÇÃO DE DADOS NA PLANILHA - FIM
 
 #ÁREA DO TEXTO DE ENTRADA
@@ -130,12 +136,10 @@ caixa_saida.place(x=50, y=370)
 
 #BOTÕES
 CreateAndAdd = Button(main,text='Adicionar nova linha',padx=20,pady=10,command=CreateAndAdd)
-clearLast = Button(main,text='Apagar última linha',padx=18,pady=10,command=ClearLast)
+#clearLast = Button(main,text='Apagar última linha',padx=18,pady=10,command=ClearLast)
 
-CreateAndAdd.place(x=100, y=410, width=200)
-clearLast.place(x=100, y=460, width=200)
+CreateAndAdd.place(x=100, y=450, width=200)
+#clearLast.place(x=100, y=460, width=200)
 #BOTÕES - FIM
 
 main.mainloop()
-
-print(lista_principal)
