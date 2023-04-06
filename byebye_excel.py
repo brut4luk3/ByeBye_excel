@@ -96,16 +96,18 @@ def CreateAndAdd():
 #FUNÇÕES - FIM
 
 #ÁREA DA LOGO
-logo = PhotoImage(file='./byebye_excel_sem_fundo1.png')
-image_label = tk.Label(image=logo)
-image_label.place(x=50, y=20)
+byebye = tk.Label(text='Bye Bye', font=("Impact", 50))
+byebye.place(x=50, y=50)
+
+excel = tk.Label(text='Excel', font=("Impact", 70))
+excel.place(x=150, y=130)
 #ÁREA DA LOGO - FIM
 
 #ÁREA DA VISUALIZAÇÃO DE DADOS NA PLANILHA
 texto_visualizacao_label = tk.Label(text='Visualize as linhas adicionadas na planilha:', font=("Arial", 15), pady=10)
 texto_visualizacao_label.place(x=500, y=20)
 
-comentario_texto_visualizacao_label = tk.Label(text='Importante: os dados abaixo são apenas ilustrativos!', font=("Arial", 8), pady=1)
+comentario_texto_visualizacao_label = tk.Label(text='Importante: Os dados abaixo são apenas ilustrativos!', font=("Arial", 8), pady=1)
 comentario_texto_visualizacao_label.place(x=500, y=55)
 
 frame_visualizacao = Text(main, width=45, height=28)
